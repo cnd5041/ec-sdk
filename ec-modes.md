@@ -23,9 +23,6 @@ As of January 2019, a new mode is available (in beta, pending production release
 
 The traditional mode consists of running at least three EC agents: a gateway, a server, and a client. 
 
-- Gateway
-	- Usually ran in Cloud Foundry, which provides a publicly available route
-
 ![Gateway Mode](./.images/gatewayMode.png) 
 
 - Server
