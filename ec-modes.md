@@ -21,16 +21,16 @@ As of January 2019, a new mode is available (in beta, pending production release
 
 ### Traditional Modes
 
-The traditional mode consists of running at least three EC agents: a gateway, a server, and a client. 
+> The traditional mode consists of running at least three EC agents: a gateway, a server, and a client. 
 
 ![Gateway Mode](./.images/gatewayMode.png) 
+> The EC *agent* running in **gateway mode** serves as the foundation for **client** and **server** interactions, by making available a 'public' URL that the other *agents* can access to establish a secure web-socket.
 
 ![Server Mode](./.images/serverMode.png) 
+> The EC *agent* running in **server mode** is configured to a specific 'resource', oftentimes a database, based on the resource's IP and port.
 
-- Client
-	- Ran where the data is needed
-	- Can *only* be accessed via 'localhost', 127.0.0.1, etc.
-	- Has to make periodic calls to manage OA2 tokens
+![Client Mode](./.images/clientMode.png)
+> The EC *agent* running in **client mode** is configured to a specific EC *agent* **server**, via *agent* ID, and listens ot a user-specified port on the localhost/127.0.0.1 where it is ran. Any connection string that would be valid for the remote resource the EC *agent* **server** is configured for, can now be accessed locally by replacing the IP with 'localhost' and the port with the one the EC *agent* **client** is listening on.
 
 <A HREF="#what-are-modes">What are 'Modes'?</A>
 
