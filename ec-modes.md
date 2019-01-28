@@ -25,10 +25,7 @@ The traditional mode consists of running at least three EC agents: a gateway, a 
 
 ![Gateway Mode](./.images/gatewayMode.png) 
 
-- Server
-	- Ran where the 'data' is, within the same environment/network
-	- Has to make periodic calls to manage OA2 tokens
-	- Has to manage a 'Gateway list' from the Service APIs
+![Server Mode](./.images/serverMode.png) 
 
 - Client
 	- Ran where the data is needed
