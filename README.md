@@ -6,7 +6,7 @@ The Enterprise-Connect SDK. Please leave your feedback [here](https://github.com
 [![Travis branch](https://img.shields.io/travis/rust-lang/rust/master.svg)](https://travis-ci.org/)
 
 ## EC Agent Modes
-[Information about Traditional, Fuse, Gateway, Server and Client modes]('./ec-modes.md')
+[Information about Traditional, Fuse, Gateway, Server and Client modes](ec-modes.md)
 
 ## System Requirement
 ### Hardware
