@@ -2,43 +2,51 @@
 
 # EC 'Modes' and Use-Case Examples
 
-This document is designed to give a high-level understanding of the two primary 'modes' that EC can be used in ('Fuse Mode' and 'Traditional'), as well as provide abstract examples of very common use cases where EC is utilized. The purpose of the latter is to guide users in understanding how EC will fit into their existing architecture and dependencies, and to help 'visualize' this via provided diagrams.
+In this page you will be able to find all the answers for all things **'modes'**, in regards to Enterprise Connect (EC) use-cases and *agents*. Please note that all links are placed for the ease of navigation in subsequent reads and visits, but the information is intended to be digestable in a flowing and linear way, start to finish.
 
 * [What are 'Modes'?](#what-are-modes)
-* [Use-Case Examples](#use-case-examples)
+* [Choosing Between Modes](#choosing-between-modes)
+* [Use-Case Mode Comparison](#use-case-mode-comparison)
 
----
 
 ## What are 'Modes'?
 
-Up until late 2018, the EC agents primarily only ran in a single way, or 'mode'. That is, for the most basic use case, users would need to run an EC agent gateway, an EC agent server, and an EC agent client. This is still completely valid, and will be referred to as **traditional mode**. 
+For the context of this page and topic, 'mode' can refer to one of five *agent* **modes**, or the choice between using **tradititonal** *agents* vs **fused** *agents*. 
 
-As of January 2019, a new mode is available (in beta, pending production release) in which either the EC agent gateway and server processes are *fused* into a single process, or the EC agent gateway and client processes are *fused* into a single process. This results in a secure streamlining of various authorizations, and results in fewer API calls for EC-side purposes, such as the EC agent server fetching a 'gateway list' from the EC Service APIs. This is what we call **fuse mode**.
+---
 
-* [Traditional Modes](#traditional-modes)
-* [Fuse Modes](#fuse-modes)
+First, on a high-level, we can look at the way in which the EC landscape is laid out as a 'mode' of sorts: either [**traditional mode**](#traditional-modes) which uses a [**traditonal** *agent gateway*](#gateway-mode), or [**fuse mode**](#fuse-modes) which combines either the *agent server* or *agent client* with the *agent gateway* into a single process which streamlines and reduces some network activity.
+
+Then, on the *EC Agent* level, there are 5 distinct *agent* **modes** available: **gateway**, **server**, **client**, **gw:server**, and **gw:client**. Read and click on to learn more about these modes.
+
 * [Choosing Between Modes](#choosing-between-modes)
 
 ### Traditional Modes
 
-> The traditional mode consists of running at least three EC agents: a gateway, a server, and a client. 
+The **traditional mode** consists of running at least three *EC Agents*: a *server*, a *client*, and most importantly a **traditional** *gateway*. 
+
+#### Gateway Mode
+> The *EC Agent* running in **gateway mode** serves as the foundation for **client** and **server** interactions, by making available a 'public' URL that the other *agents* can access to establish a secure web-socket.
 
 ![Gateway Mode](./.images/gatewayMode.png) 
-> The EC *agent* running in **gateway mode** serves as the foundation for **client** and **server** interactions, by making available a 'public' URL that the other *agents* can access to establish a secure web-socket.
+
+#### Server Mode
+> The *EC Agent* running in **server mode** is configured to a specific 'resource', oftentimes a database, based on the resource's IP and port.
 
 ![Server Mode](./.images/serverMode.png) 
-> The EC *agent* running in **server mode** is configured to a specific 'resource', oftentimes a database, based on the resource's IP and port.
+
+#### Client Mode
+> The *EC Agent* running in **client mode** is configured to a specific *EC Agent* **server**, via *agent* ID, and listens ot a user-specified port on the localhost/127.0.0.1 where it is ran. Any connection string that would be valid for the remote resource the *EC Agent* **server** is configured for, can now be accessed locally by replacing the IP with 'localhost' and the port with the one the *EC Agent* **client** is listening on.
 
 ![Client Mode](./.images/clientMode.png)
-> The EC *agent* running in **client mode** is configured to a specific EC *agent* **server**, via *agent* ID, and listens ot a user-specified port on the localhost/127.0.0.1 where it is ran. Any connection string that would be valid for the remote resource the EC *agent* **server** is configured for, can now be accessed locally by replacing the IP with 'localhost' and the port with the one the EC *agent* **client** is listening on.
 
-<A HREF="#what-are-modes">What are 'Modes'?</A>
+* [What are 'Modes'?](#what-are-modes)
 
 <A HREF="#top">Back To Top</A>
 
 ### Fuse Modes
 
-When running in fuse mode, either the client or server agent process is 'fused' with the Gateway app/process. This allows for a secure streamlining of previous subprocesses, 'hops', calls, etc., which leaves more resources for transferring data.
+The **fuse mode** consists of running an *agent gateway* **fused** with either an *agent server* or *agent client*, and the complimentary, remaining *agent* **mode**. 
 
 - Gateway:Server
 	- Ran where the 'data' is, within the same environment/network
@@ -49,48 +57,38 @@ When running in fuse mode, either the client or server agent process is 'fused' 
 	- Ran where the data is needed
 	- (WIP) 
 
-<A HREF="#what-are-modes">What are 'Modes'?</A>
+* [What are 'Modes'?](#what-are-modes)
 
 <A HREF="#top">Back To Top</A>
 
-### Choosing Between Modes
+## Choosing Between Modes
 
-While you can expect better overall performance from **fuse mode**, some teams and use-cases may inherently favor the decoupling of agents for manageability or other considerations. Additionally, for existing EC configurations, switching over to **fuse mode** from **traditional mode** may be more challenging than the potential gains merit.
+While you can expect better overall performance from [**fuse mode**](#fuse-modes), some teams and use-cases may inherently favor the decoupling of *agents* for manageability or other considerations. Additionally, for existing EC configurations, switching over to [**fused**](#fuse-modes) from [**traditional**](#traditional-modes) may be more challenging than the potential gains merit. It is best to spend time exploring the pros and cons with all parties affected by configuration changes, but in the long run, [**fuse mode**](#fuse-modes) can provide better overall efficiency in terms of speed and failure rates (both [**fuse mode**](#fuse-modes) and [**traditional**](#traditional-modes) *agents* maintain less than a 1% failure rate based on postgres transactions that can not be summarily explained by failure of other actors).
 
-<A HREF="#what-are-modes">What are 'Modes'?</A>
+* [What are 'Modes'?](#what-are-modes)
+* [Traditional Modes](#traditional-modes)
+* [Fuse Modes](#fuse-modes)
 
 <A HREF="#top">Back To Top</A>
 
 ---
 
-## Use-Case Examples
+## Use-Case Mode Comparison
 
-Please see the following examples, diagrams and pictures, which are intended to give a slightly abstracted view of how EC is able to fit into a variety of use-cases and existing, high-level system architectures. 
-
-* [Cloud Data, Reach-Back](#cloud-data-reach-back)
-* [On-Prem Data, Reach-In](#on-prem-data-reach-in)
+In the following diagrams, we explore how network activity is simplified in [**fuse mode**](#fuse-modes) compared to [**traditional**](#traditional-modes) by taking a look at the two most common use-cases which, with a little imagination, cover the vast majority of other, more complex use-cases.
 
 
-### Cloud Data, Reach-Back
+### Cloud Data, GW:Server
 
-In this example, we need to get data from Postgres in Predix to an application on-prem, which has no way of natively communicating with the Postgres instance.
+> In this example, we need to get data from Postgres in Predix to an application on-prem, which has no way of natively communicating with the Postgres instance.
 
 ![Reach-Back Comparison](./.images/sideBySideReachBack.png)
 
-<A HREF="#use-case-examples">Use-Case Examples</A>
+### On-Prem Data, GW:Client
 
-<A HREF="#top">Back To Top</A>
-
-
-### On-Prem Data, Reach-In
-
-In this example, we need to 'reach in' to the GE Network to access data that is needed by our application in Cloud Foundry. We *must* 'embed' the EC Agent Client in this application to run as a sub-process.
-
-#### Side-By-Side Activity Comparison
+> In this example, we need to 'reach in' to the GE Network to access data that is needed by our application in Cloud Foundry. We *must* 'embed' the *EC Agent client* in this application to run as a sub-process.
 
 ![Reach-Back Comparison](./.images/sideBySideReachIn.png)
-
-<A HREF="#use-case-examples">Use-Case Examples</A>
 
 <A HREF="#top">Back To Top</A>
 
@@ -98,4 +96,7 @@ In this example, we need to 'reach in' to the GE Network to access data that is 
 
 
 # Notes
-- diagram difference between fuse mode and traditional mode
+- [ ] Separate networks more clearly
+- [ ] GW:Client
+- [ ] GW:Server
+- [ ] Comparison Graphs
