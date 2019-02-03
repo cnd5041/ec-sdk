@@ -93,10 +93,3 @@ In the following diagrams, we explore how network activity is simplified in [**f
 <A HREF="#top">Back To Top</A>
 
 ---
-
-
-# Notes
-- [ ] Separate networks more clearly
-- [ ] GW:Client
-- [ ] GW:Server
-- [ ] Comparison Graphs
