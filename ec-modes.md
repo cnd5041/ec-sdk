@@ -53,9 +53,10 @@ The **fuse mode** consists of running an *agent gateway* **fused** with either a
 	- Leveraged in use-cases where the data is in a cloud environment such as Cloud Foundry, so the Gateway will have a publicly available URL
 	- Fewer total maintenance/API 'calls' than traditional Gateway and Server
 
-- Gateway:Client
-	- Ran where the data is needed
-	- (WIP) 
+#### GW:Client Mode
+> The *EC Agent* running in **gw:client mode** fuses the functionality of the **traditional** *agent gateway* and *agent client* into a single container and entity. (There are some additional considerations when running **gw:client mode** outside of Cloud Foundry that fall outside the scope of this light documentation)
+
+![GW:Client Mode](./.images/gwClientMode.png)
 
 * [What are 'Modes'?](#what-are-modes)
 
