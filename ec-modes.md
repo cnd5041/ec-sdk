@@ -48,10 +48,10 @@ The **traditional mode** consists of running at least three *EC Agents*: a *serv
 
 The **fuse mode** consists of running an *agent gateway* **fused** with either an *agent server* or *agent client*, and the complimentary, remaining *agent* **mode**. 
 
-- Gateway:Server
-	- Ran where the 'data' is, within the same environment/network
-	- Leveraged in use-cases where the data is in a cloud environment such as Cloud Foundry, so the Gateway will have a publicly available URL
-	- Fewer total maintenance/API 'calls' than traditional Gateway and Server
+#### GW:Server Mode
+> The *EC Agent* running in **gw:server mode** fuses the functionality of the **traditional** *agent gateway* and *agent server* into a single container and entity.
+
+![GW:Server Mode](./.images/gwServerMode.png) 
 
 #### GW:Client Mode
 > The *EC Agent* running in **gw:client mode** fuses the functionality of the **traditional** *agent gateway* and *agent client* into a single container and entity. (There are some additional considerations when running **gw:client mode** outside of Cloud Foundry that fall outside the scope of this light documentation)
