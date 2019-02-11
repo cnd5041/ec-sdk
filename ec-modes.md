@@ -7,6 +7,7 @@ In this page you will be able to find all the answers for all things **'modes'**
 * [What are 'Modes'?](#what-are-modes)
 * [Choosing Between Modes](#choosing-between-modes)
 * [Use-Case Mode Comparison](#use-case-mode-comparison)
+* [EC Mode Speed Comparisons](#ec-mode-speed-comparisons)
 
 
 ## What are 'Modes'?
@@ -90,6 +91,21 @@ In the following diagrams, we explore how network activity is simplified in [**f
 > In this example, we need to 'reach in' to the GE Network to access data that is needed by our application in Cloud Foundry. We *must* 'embed' the *EC Agent client* in this application to run as a sub-process.
 
 ![Reach-Back Comparison](./.images/sideBySideReachIn.png)
+
+<A HREF="#top">Back To Top</A>
+
+---
+
+## EC Mode Speed Comparisons
+
+In the following graphs and diagrams, we take a look at the difference in speeds between **traditional** EC configurations, **fuse mode**, and **direct** connections to a very basic table.
+
+
+### Gateway, Server and Client vs GW:Server and Client
+
+> In these tests, we compared how the **traditional** configuration compares to a **fuse mode**, **gw:server** based configuration.
+
+![GW:Server](./.images/speedCompGwServer.png)
 
 <A HREF="#top">Back To Top</A>
 
